@@ -1,7 +1,10 @@
 def ver_to_dict(d):
     resp = {}
     for i in d:
-        resp[i[1]] = i[0]
+        if i[1] in resp.keys():
+            resp[i[1]] = f"{resp[i[1]]} {i[0]}"
+        else:
+            resp[i[1]] = i[0]
     for key, value in resp.items():
         print(f"{key} : {value}")
 
