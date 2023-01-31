@@ -1,6 +1,7 @@
 import sys
 
 def run(arg):
+    state = arg[1]
     states = {
     "Oregon" : "OR",
     "Alabama" : "AL",
@@ -14,7 +15,10 @@ def run(arg):
     "NJ": "Trenton",
     "CO": "Denver"
     }
-    print(arg)
+    if state not in states.keys():
+        print("Unknown state")
+    else:
+        print(capital_cities[states[state]])
 
 if __name__ == '__main__':
     arg = sys.argv
