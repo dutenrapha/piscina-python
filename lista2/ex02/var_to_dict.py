@@ -5,8 +5,7 @@ def ver_to_dict(d):
             resp[i[1]] = f"{resp[i[1]]} {i[0]}"
         else:
             resp[i[1]] = i[0]
-    for key, value in resp.items():
-        print(f"{key} : {value}")
+    return resp
 
 def run():
     d = [
@@ -31,7 +30,9 @@ def run():
         ('Thompson' , '1949'),
         ('Burton' , '1939')
         ]
-    ver_to_dict(d)
-
+    resp = ver_to_dict(d)
+    for key, value in resp.items():
+        print(f"{key} : {value}")
+        
 if __name__ == '__main__':
     run()
