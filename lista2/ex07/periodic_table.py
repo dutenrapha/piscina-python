@@ -22,47 +22,33 @@ def html_box_empty():
       
                 </td>'''
 
-def html_box_full():
-    return '''<td style="border: 1px solid black; padding:10px">
-                    <h4>Hydrogen</h4>
-                    <ul>
-                        <li>No 42</li>
-                        <li>H</li>
-                        <li>1.00794</li>
-                        <li>1 electron</li>
-                    <ul>
-                </td>'''
+def html_box_full(name, number, small, molar, electron):
+    return f"<td style=\"border: 1px solid black; padding:10px\"><h4>{name}</h4><ul><li>No {number}</li><li>{small}</li><li>{molar}</li><li>{electron}</li><ul></td>"
 
-def html_table():
-    return '''<table>
-            <tr>
-                {{box}}
-                {{box}}
-                {{box_empty}}
-                {{box_empty}}
-                {{box}}
-            </tr>
-            <tr>
-                {{box}}
-                {{box_empty}}
-                {{box_empty}}
-                {{box}}
-                {{box}}
-            </tr>
-            <tr>
-                {{box}}
-                {{box_empty}}
-                {{box}}
-            </tr>
-        </table>'''
+def html_table(rows, columns, empty_list=[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],[2,3,4,5,6,7,8,9,10,11],[2,3,4,5,6,7,8,9,10,11],[],[],[],[]]):
+    base = '''<table> placeholder </table>'''
+    r = ""
+    for row in range(rows):
+        r = r + f"<tr> row_{row} </tr>"
+    base = insert_placeholder(base, "placeholder", r)
 
+    for row in range(rows):
+        c = ""
+        for column in range(columns):
+            if column in empty_list[row]:
+                c = c + " box_empty"
+            else:
+                c = c + f" box_{row}_{column}"
+        base = insert_placeholder(base, f"row_{row}", c)
+    return(base)
 
 def read_txt():
     with open('periodic_table.txt') as f:
-        numbers = f.readlines()
-        numbers = numbers[0].split(",")
-        for number in numbers:
-            print(number)
+        lines = f.readlines()
+        for line in lines:
+            l = line.strip()
+            l = l.split(",")
+            print(l)
 
 def generate_html(html):
     file_html = open("periodic_table.html", "w")
@@ -70,8 +56,13 @@ def generate_html(html):
     file_html.close()
 
 if __name__ == '__main__':
+    # html = html_table(7,18)
+    # html = insert_placeholder(html, "box_empty", html_box_empty())
+    # for row in range(7):
+    #     for column in range(18):
+    #         html = insert_placeholder(html, f"box_{row}_{column}", html_box_full())
     read_txt()
-    html_t = insert_placeholder(html_table(), "{{box}}", html_box_full())
-    html_t = insert_placeholder(html_t, "{{box_empty}}", html_box_empty())
-    html = insert_placeholder(doctype(), "{{placeholder}}", html_t)
-    generate_html(html)
+    # html_t = insert_placeholder(html_table(3,10), "{{box}}", html_box_full())
+    # html_t = insert_placeholder(html_t, "{{box_empty}}", html_box_empty())
+    # html = insert_placeholder(doctype(), "{{placeholder}}", html_t)
+    # generate_html(html)
