@@ -24,3 +24,7 @@ if __name__ == '__main__':
     print(Mark) 
     print(f"Mark could you make a coffe? {Mark.make_coffee()}")
     print(f"no_name_intern could you make a coffe? {no_name_intern.make_coffee()}")
+    try:
+        Mark.work()
+    except Exception as e:
+        print(f"Mark exception {e}")
