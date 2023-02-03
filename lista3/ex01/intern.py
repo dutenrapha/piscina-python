@@ -27,4 +27,4 @@ if __name__ == '__main__':
     try:
         Mark.work()
     except Exception as e:
-        print(f"Mark exception {e}")
+        print(f"Mark exception message {e}")
