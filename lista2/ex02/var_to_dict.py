@@ -1,4 +1,4 @@
-def ver_to_dict(d):
+def list_to_dict(d):
     resp = {}
     for i in d:
         if i[1] in resp.keys():
@@ -30,7 +30,7 @@ def run():
         ('Thompson' , '1949'),
         ('Burton' , '1939')
         ]
-    resp = ver_to_dict(d)
+    resp = list_to_dict(d)
     for key, value in resp.items():
         print(f"{key} : {value}")
         
