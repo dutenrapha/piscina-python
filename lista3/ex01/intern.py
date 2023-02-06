@@ -22,9 +22,9 @@ if __name__ == '__main__':
     print(no_name_intern)
     Mark = Itern("Mark")
     print(Mark) 
-    print(f"Mark could you make a coffe? {Mark.make_coffee()}")
-    print(f"no_name_intern could you make a coffe? {no_name_intern.make_coffee()}")
+    print(f"Mark could you make a coffe? Mark response: {Mark.make_coffee()}")
+    print(f"no_name_intern could you make a coffe? no_name_itern response: {no_name_intern.make_coffee()}")
     try:
-        Mark.work()
+        no_name_intern.work()
     except Exception as e:
-        print(f"Mark exception message {e}")
+        print(f"no_name_intern exception message: {e}")
