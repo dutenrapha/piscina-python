@@ -81,18 +81,6 @@ class Br(elem.Elem):
         super().__init__(tag='br', attr=attr, tag_type='simple')
 
 if __name__ == '__main__':
-    #print( Html( [
-    #   Head(), 
-    #   Body()] ) )
-    # 
-    # 
-    #print( Html( [Head(), Body([H1(elem.Text("Isso é um H1!")),H2(elem.Text("Isso é um H2!")),Img(attr={'src': 'http://i.imgur.com/pfp3T.jpg'})])])) 
-    
-    # print( Html( 
-    #     [Head([
-    #         Title(elem.Text("Helo Ground!"))]), 
-    #     Body([
-    #         H1(elem.Text("Oh no, not again!")),
-    #         Img(attr={'src': 'http://i.imgur.com/pfp3T.jpg'})])]))
-    
+    print( Html( [Head([  Title(elem.Text("Helo Ground!"))]),   Body([ H1(elem.Text("Oh no, not again!")), Img(attr={'src': 'http://i.imgur.com/pfp3T.jpg'})])]))
+    print("\n")
     print(Html([Head(), Body()])) 
