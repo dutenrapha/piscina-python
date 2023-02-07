@@ -20,8 +20,10 @@ class Itern():
 if __name__ == '__main__':
     no_name_intern = Itern()
     print(no_name_intern)
+    print(no_name_intern.Name)
     Mark = Itern("Mark")
-    print(Mark) 
+    print(Mark)
+    print(Mark.Name)
     print(f"Mark could you make a coffe? Mark response: {Mark.make_coffee()}")
     print(f"no_name_intern could you make a coffe? no_name_itern response: {no_name_intern.make_coffee()}")
     try:

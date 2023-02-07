@@ -16,7 +16,6 @@ class Coffee(HotBeverage):
         return super().description("A coffee, to stay awake.")
 
 class Tea(HotBeverage):
-    price = 0.3
     name = "tea"
 
     def description(self):
