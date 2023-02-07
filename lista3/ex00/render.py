@@ -1,6 +1,20 @@
 import sys
 import os
 
+def doctype():
+    return '''    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{title}</title>
+    </head>
+    <body>
+        {placeholder}
+    </body>
+    </html>'''
+
 def insert_placeholder(base_html, placeholder, new_html):
     resp = base_html.replace(placeholder,new_html)
     return resp
@@ -14,10 +28,11 @@ def run(arg):
     with open(arg, "r") as my_file:
         template = my_file.read()
         cv = insert_placeholder(template, "{name}", str(name))
-        cv = insert_placeholder(cv, "{title}", str(title))
         cv = insert_placeholder(cv, "{surname}", str(surname))
         cv = insert_placeholder(cv, "{age}", str(age))
-        html = insert_placeholder(cv, "{profession}", str(profession))
+        cv = insert_placeholder(cv, "{profession}", str(profession))
+        html = insert_placeholder(doctype(), "{placeholder}", cv)
+        html = insert_placeholder(html, "{title}", str(title))
         generate_html(html, arg.split(".")[0])
 
 def is_valide_file(arg):
@@ -29,7 +44,10 @@ def is_valide_file(arg):
 
 if __name__ == '__main__':
     arg = sys.argv
-    exec(open("./settings.py").read())
+    name = "teste"
+    
+    var = open("./settings.py").read()
+    exec(var)
     if len(arg) == 2: 
         if is_valide_file(arg[1]):
             run(arg[1])
