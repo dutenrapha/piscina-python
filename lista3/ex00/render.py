@@ -27,12 +27,9 @@ def generate_html(html, html_name):
 def run(arg):
     with open(arg, "r") as my_file:
         template = my_file.read()
-        cv = insert_placeholder(template, "{name}", str(name))
-        cv = insert_placeholder(cv, "{surname}", str(surname))
-        cv = insert_placeholder(cv, "{age}", str(age))
-        cv = insert_placeholder(cv, "{profession}", str(profession))
-        html = insert_placeholder(doctype(), "{placeholder}", cv)
-        html = insert_placeholder(html, "{title}", str(title))
+        html = insert_placeholder(doctype(), "{placeholder}", template)
+        for k, v in d.items():
+            html = insert_placeholder(html, "{" + str(k) + "}", str(v))
         generate_html(html, arg.split(".")[0])
 
 def is_valide_file(arg):
@@ -42,12 +39,14 @@ def is_valide_file(arg):
     else:
         return False
 
+def temp(**kwargs):
+  return kwargs
+
 if __name__ == '__main__':
-    arg = sys.argv
-    name = "teste"
-    
+    arg = sys.argv    
     var = open("./settings.py").read()
-    exec(var)
+    var = var.replace("\n", ",")
+    exec(f"d = temp({var})")
     if len(arg) == 2: 
         if is_valide_file(arg[1]):
             run(arg[1])
