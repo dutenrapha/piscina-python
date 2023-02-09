@@ -45,6 +45,10 @@ def search_format(search):
     return(search)
 
 if __name__ == '__main__':
+    # Accuvio
+    # adrian Speyer
+    # information
+    # Barbra Streisand
     arg = sys.argv    
     if len(arg) == 2:
         road  = []
