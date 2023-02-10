@@ -8,7 +8,8 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/lista2/ex07/periodic_table.py",
+            "program": "${workspaceFolder}/lista3/ex03/roads_to_philosophy.py",
+            "args": ["adrian Speyer"],
             "console": "externalTerminal",
             "cwd": "${fileDirname}",
             "justMyCode": true
